@@ -15,34 +15,21 @@ Note to remember :
 	  value because this value only updated in the cache based on key
 	 
 	 
-4. we can use simple cache configuration in two ways in Spring boot  
+4. we have to add following properties in application.property file
+		spring.cache.type=ehcache
+		spring.cache.ehcache.config=classpath:ehcache.xml
     
-    i. We can declare a bean in main as given below
-			@Bean
-			public CacheManager cacheManager() {
-				return new ConcurrentMapCacheManager("ticketsCache");
-			}
-	ii. Or We can declare the below properties in property file
-	    	#cache name
-	    	spring.cache.cache-names=ticketsCache
-			#cache type
-			spring.cache.type=simple
-			
-			
-			for multiple cache we can declare name separated by commas.
-			example : spring.cache.cache-names=ticketsCache,passengerCache
-			
-			if we want to disable cache entire class then we can use cache type as 'no'
-			spring.cache.type=no
-
-
-
-5. Dependencies needed
+ 5. Dependencies needed
  		
  		<!-- Spring boot cache dependency -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
 		</dependency>
 	  
 	  
